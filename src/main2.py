@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import json
 from PyPDF2 import PdfReader  # Import PdfReader instead of PdfFileReader
-# import generate_embedings
+
 
 # Initialize the session state
 if 'messages' not in st.session_state:
