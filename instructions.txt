@@ -8,18 +8,13 @@
 7. torch
 -----------------------------
 
-
-
 ------INSTALL REQUIRED PACKAGES-----------------
 pip install streamlit PyMuPDF pdfplumber sentence-transformers faiss-cpu transformers torch
 ------------------------------------------------
 
-
-
 -----INSTALL STREAMLIT-------------------------
 pip install streamlit
 -----------------------------------------------
-
 
 ----START STREAMLIT---------------------------
 streamlit run src\main2.py
