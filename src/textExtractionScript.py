@@ -22,7 +22,7 @@ def save_texts_to_json(texts, output_path):
 
 if __name__ == "__main__":
     pdf_files = [
-        "data\goog-10-k-2023.pdf",
+        r"data\goog-10-k-2023.pdf",
         r"data\tsla-20231231-gen.pdf",
         r"data\uber-10-k-2023.pdf"
     ]
