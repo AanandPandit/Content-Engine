@@ -1,4 +1,6 @@
 from transformers import pipeline
+from difflib import unified_diff
+import os
 
 # Function to read text from a file
 def read_text(file_path):
@@ -30,30 +32,54 @@ def generate_insights(text):
         print(f"Error in generating insights: {e}")
         return None
 
-# File paths
-file_path1 = r'test\file1.txt'
-file_path2 = r'test\file2.txt'
-
-# Read texts from files
-text1 = read_text(file_path1)
-text2 = read_text(file_path2)
-
-# Generate insights for both texts
-if text1 and text2:
-    insights1 = generate_insights(text1)
-    insights2 = generate_insights(text2)
+# Define the chain
+class FileInsightChain:
+    def __init__(self, file_path):
+        self.file_path = file_path
     
-    if insights1 and insights2:
-        # Print insights
-        print("Insights from File 1:")
-        print(insights1)
-        print("\nInsights from File 2:")
-        print(insights2)
-        
-        # Compare insights (example: print differences)
-        print("\nDifferences in Insights:")
-        print("---")
-        print("File 1 vs File 2")
-        print("---")
-        print("Comparison Result:\n")
-        diffs = list(text1)
+    def __call__(self):
+        text = read_text(self.file_path)
+        if text:
+            insights = generate_insights(text)
+            return insights
+        else:
+            return "Error reading file."
+
+# File paths
+file_path1 = os.path.join('extracted_texts', 'file1.pdf.txt')
+file_path2 = os.path.join('extracted_texts', 'file2.pdf.txt')
+file_path3 = os.path.join('extracted_texts', 'file3.pdf.txt')
+
+# Create chain instances
+chain1 = FileInsightChain(file_path1)
+chain2 = FileInsightChain(file_path2)
+chain3 = FileInsightChain(file_path3)
+
+# Get insights
+insights1 = chain1()
+insights2 = chain2()
+insights3 = chain3()
+
+# Print insights
+print("Insights from File 1:")
+print(insights1)
+print("\nInsights from File 2:")
+print(insights2)
+print("\nInsights from File 3:")
+print(insights3)
+
+# Compare insights (example: print differences)
+print("\nDifferences in Insights between File 1 and File 2:")
+diff12 = unified_diff(insights1.splitlines(), insights2.splitlines())
+for line in diff12:
+    print(line)
+
+print("\nDifferences in Insights between File 1 and File 3:")
+diff13 = unified_diff(insights1.splitlines(), insights3.splitlines())
+for line in diff13:
+    print(line)
+
+print("\nDifferences in Insights between File 2 and File 3:")
+diff23 = unified_diff(insights2.splitlines(), insights3.splitlines())
+for line in diff23:
+    print(line)

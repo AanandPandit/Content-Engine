@@ -1,0 +1,4 @@
+A supercomputer is an extremely powerful computer that is designed to perform 
+complex calculations and simulations at incredibly high speeds. These machines 
+are typically used for scientific and engineering applications that require 
+massive amounts of processing power.
