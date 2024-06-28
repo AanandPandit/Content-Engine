@@ -16,7 +16,7 @@ def get_bot_response(user_input):
         "bye": "Goodbye!",
         "save uploaded pdf": save_uploaded_pdf,  # Correctly reference the function
         "show text": extract_text_from_pdf,
-        "generate embeding": generate_embedings_from_text_file
+        "generate embeding": __name__
     }
     return rules.get(user_input.lower(), "I don't understand that. Can you rephrase?")
 
