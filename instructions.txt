@@ -1,0 +1,36 @@
+-----REQUIREMENTS------------ 
+1. streamlit
+2. PyMuPDF
+3. pdfplumber
+4. sentence-transformers
+5. faiss-cpu
+6. transformers
+7. torch
+-----------------------------
+
+
+
+------INSTALL REQUIRED PACKAGES-----------------
+pip install streamlit PyMuPDF pdfplumber sentence-transformers faiss-cpu transformers torch
+------------------------------------------------
+
+
+
+-----INSTALL STREAMLIT-------------------------
+pip install streamlit
+-----------------------------------------------
+
+
+----START STREAMLIT---------------------------
+streamlit run src\main2.py
+----------------------------------------------
+
+--------WHAT TO DO?-----------------------------
+1. Run the streamlit app    
+2. Upload a pdf file (you can upload multiple pdf)
+3. Type "save uploaded pdf", 
+    it will create two folders  - embedings for storing embeding file for each pdf 
+                                - extracted_texts for storing .txt file and .json file after converting from pdf file
+4. Open working directory and run 
+    'python c1_insights.py'  to get insights from the json file and comparison between the files.
+5. Output will generated in terminal.
