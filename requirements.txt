@@ -1,2 +1,0 @@
-OS Windows
-RAM 2GB
